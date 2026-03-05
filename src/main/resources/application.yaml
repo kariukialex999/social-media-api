@@ -3,8 +3,8 @@ spring:
     name: socialmedia-api
   datasource:
     url: jdbc:postgresql://localhost:5432/socialmedia_db
-    username: kariioke
-    password: kariioke
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

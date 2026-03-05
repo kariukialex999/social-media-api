@@ -1,4 +1,4 @@
-package org.kariioke.socialmediaapi.Entity;
+package org.kariioke.socialmediaapi.entity;
 
 import jakarta.persistence.*;
 import org.jspecify.annotations.Nullable;
@@ -8,9 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
@@ -37,6 +40,12 @@ public class User implements UserDetails {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<Post> posts = new HashSet<>();
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

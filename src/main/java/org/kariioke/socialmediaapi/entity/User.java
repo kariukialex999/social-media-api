@@ -1,6 +1,7 @@
 package org.kariioke.socialmediaapi.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,6 +15,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -45,7 +50,25 @@ public class User implements UserDetails {
     @Builder.Default
     private Set<Post> posts = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_followers",
+    joinColumns = @JoinColumn(name = "followed_id"))
+    @Builder.Default
+    private Set<User> followers = new HashSet<>();
 
+    @ManyToMany(mappedBy = "followers", fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<User> following = new HashSet<>();
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

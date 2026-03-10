@@ -97,4 +97,12 @@ public class ApiResponse {
             private String message;
         }
     }
+
+    /*SUCCESS - simple success message for actions that don't return an entity like liking a post and following a user*/
+
+    @Data
+    @Builder
+    public static class MessageResponse {
+        private String message;
+    }
 }

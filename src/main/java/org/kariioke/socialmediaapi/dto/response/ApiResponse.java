@@ -88,13 +88,13 @@ public class ApiResponse {
         private String error;
         private String message;
         private LocalDateTime timestamp;
-        private List<FieldError> fieldErrors;
-    }
+        private List<ValidationError> fieldErrors;
 
-    @Data
-    @Builder
-    public static class FieldError {
-        private String field;
-        private String message;
+        @Data
+        @Builder
+        public static class ValidationError {
+            private String field;
+            private String message;
+        }
     }
 }

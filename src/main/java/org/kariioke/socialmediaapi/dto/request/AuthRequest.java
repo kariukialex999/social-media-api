@@ -1,4 +1,4 @@
-package org.kariioke.socialmediaapi.dto;
+package org.kariioke.socialmediaapi.dto.request;
 
 import lombok.Data;
 

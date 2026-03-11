@@ -16,7 +16,7 @@ public class AuthRequest {
 
 
     @Data
-    private static class Login {
+    public static class Login {
          private String username;
 
          private String password;

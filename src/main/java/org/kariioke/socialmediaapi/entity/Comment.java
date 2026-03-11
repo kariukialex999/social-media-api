@@ -1,9 +1,17 @@
 package org.kariioke.socialmediaapi.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "comments")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Comment {
 
     @Id

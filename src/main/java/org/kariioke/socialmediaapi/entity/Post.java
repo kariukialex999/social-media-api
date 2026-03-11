@@ -1,7 +1,7 @@
 package org.kariioke.socialmediaapi.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -9,6 +9,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "posts")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Post {
 
     @Id
